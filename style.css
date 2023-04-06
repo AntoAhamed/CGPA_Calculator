@@ -11,9 +11,15 @@
     background-color: aquamarine;
 }
 
-.primary, .secondary {
+.primary, .secondary, #showInfoDiv>p {
     margin: 20px;
     padding: 30px;
+}
+
+#showInfoDiv > p {
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
 }
 
 input {
@@ -24,4 +30,15 @@ input {
     font-size: 15px;
     border: 1px solid black;
     font-style: bold;
+    border-radius: 10px;
+}
+
+#submit1, #submit2, #submit3 {
+    cursor: pointer;
+}
+
+#submit1:hover, #submit2:hover, #submit3:hover {
+    background-color: black;
+    color: white;
+    box-shadow: 5px 5px lightcoral;
 }

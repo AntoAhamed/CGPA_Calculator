@@ -5,6 +5,8 @@ var gradePoint = document.getElementById("gradePoint");
 var secondarySubmition = document.getElementById("submit2");
 var cgpa = document.getElementById("result");
 var reset = document.getElementById("submit3");
+var infoDiv = document.getElementById("showInfoDiv");
+//var info = document.getElementById("showInfo");
 
 var i = 0, count = 0, up, down, r;
 
@@ -15,6 +17,10 @@ primarySubmition.addEventListener('click', () => {
     let tmp = Number(numberOfCourses.value);
     if (tmp != 0) {
         i = tmp;
+        if (i === 1) {
+            secondarySubmition.value = "Calculate";
+        }
+        alert("Number of courses are submited");
     }
 });
 
@@ -34,6 +40,13 @@ secondarySubmition.addEventListener('click', () => {
     if (count == i) {
         result();
     }
+
+    for (let j = 0; j < creditArray.length; j++) {
+        const para = document.createElement("p");
+        const node = document.createTextNode((j + 1) + " Credit " + creditArray[j] + " gradePoint " + gradePointArray[j]);
+        para.appendChild(node);
+        infoDiv.appendChild(para);
+    }
 });
 
 function result() {
@@ -44,15 +57,18 @@ function result() {
         down += creditArray[x];
     }
     r = up / down;
-    cgpa.value = r.toString();
+    cgpa.innerHTML = parseFloat(r).toFixed(2);
     reset.style = "display:inline";
+    alert("Your cgpa is " + parseFloat(r).toFixed(2));
 }
 
 reset.addEventListener('click', () => {
     numberOfCourses.value = '';
+    //info.innerHTML = "Here the given info will be shown";
     credit.value = '';
     gradePoint.value = '';
-    cgpa.value = '';
+    cgpa.innerHTML = "CGPA";
+    infoDiv.remove();
     count = 0;
     for (let x = 0; x < i; x++) {
         creditArray.shift();
